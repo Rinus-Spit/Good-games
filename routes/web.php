@@ -21,6 +21,10 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/logout', function () {
+    return redirect('login')->with(Auth::logout());
+});
+
 /*Route::get('/about', function () {
     //$profiel = App\Game::paginate(4);
     
@@ -38,7 +42,7 @@ Route::post('/games', 'GameController@store')
 Route::get('/games/create', 'GameController@create')
     ->name('games.create')
     ->middleware('auth');
-Route::get('/showgames', 'GameController@indexedit')
+Route::get('/games/showgames', 'GameController@indexedit')
     ->name('games.indexedit')
     ->middleware('auth');
 Route::get('/games/{game}', 'GameController@show')
@@ -49,7 +53,10 @@ Route::get('/games/{game}/edit', 'GameController@edit')
     ->middleware('auth');
 Route::put('/games/{game}', 'GameController@update')
     ->name('games.update')
-    ;
+    ->middleware('auth');
+Route::delete('/games/{game}', 'GameController@destroy')
+    ->name('games.destroy')
+    ->middleware('auth');
 
 Auth::routes();
 

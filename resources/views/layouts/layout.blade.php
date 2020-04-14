@@ -9,27 +9,50 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,600&display=swap" />
         <link rel="stylesheet" href="/css/main.css" />
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/all.min.css" />
+        <!--<script src="https://use.fontawesome.com/7626226e024.js"></script>-->
     </head>
-    <body class="is-preload">
+    <body class="">
 
         <!-- Header -->
             <header id="header">
-                <a class="logo" href="index.html">Goodgames</a>
-                <nav>
-                    <a href="#menu">Menu</a>
-                </nav>
-            </header>
+                <a class="logo" href="./">Goodgames</a>
+            <nav >
+<!--                    <a href="#menu">Menu</a> -->
+                <ul class="links">
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/games') }}">Games tonen</a></li>
+                    <li><a href="{{ url('/games/create') }}">Games toevoegen</a></li>
+                    <li><a href="{{ url('/games/showgames') }}">Games bewerken</a></li>
+                </ul>
+                <ul class="links auth">
+            @if (Route::has('login'))
+                    @auth
+                        <li><a href="{{ url('/home') }}">Home</a></li>
+                    @else
+                        <li><a href="{{ route('login') }}">Login</a></li>
 
-        <!-- Nav -->
+                        @if (Route::has('register'))
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @endif
+                    @endauth
+            @endif
+                </ul>
+                </nav> 
+        <!-- Nav 
             <nav id="menu">
                 <ul class="links">
                     <li><a href="./">Home</a></li>
                     <li><a href="games">Games tonen</a></li>
-                    <li><a href="addGames">Games toevoegen</a></li>
+                    <li><a href="games/create">Games toevoegen</a></li>
                     <li><a href="showGames">Games bewerken</a></li>
                 </ul>
-            </nav>
+            </nav> -->
+
+            </header>
 
         <!-- Banner -->
                                     @yield('banner')
@@ -51,7 +74,7 @@
                         </section>
                     </div>
                     <div class="copyright">
-                        &copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>
+                        &copy; Rinus Spit 
                     </div>
                 </div>
             </footer>
