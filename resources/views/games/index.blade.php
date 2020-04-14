@@ -9,10 +9,10 @@
                 @foreach ($games as $game)
                     <li class="">
                         <h3>
-                            <a href="{{ route('games.show', $game) }}"> {{ $game->naam }} </a>
+                            <a href="{{ route('games.show', $game) }}"> {{ $game->title }} </a>
                         </h3>
                         <div class="excerpt">
-                            <img href="{{ $game->excerpt }}">
+                            {{ $game->excerpt }}
                         </div>
                     </li>
                 @endforeach

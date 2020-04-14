@@ -7,12 +7,12 @@
             <div class="content">
                 <ul class="style1">
                     <li class="first">
-                        <h3>{{ $games->title }}</h3>
+                        <h3>{{ $game->title }}</h3>
                         <div class="excerpt">
-                            <img href="{{ $games->excerpt }}">
+                            {{ $game->excerpt }}
                         </div>
                         <div class="description">
-                            <img href="{{ $games->body }}">
+                            {{ $game->body }}
                         </div>
                     </li>
                 </ul>
