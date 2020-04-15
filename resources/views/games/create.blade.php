@@ -55,6 +55,32 @@
                         </div>
                     </div>
 
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    
+                    <label class="control-label" for="category">Categorieën</label>
+                    <button type="button" class="btn btn-primary btn-xs" id="selectbtn-tag">
+                        Select all
+                    </button>
+                    <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-tag">
+                        Deselect all
+                    </button>
+                    <!--  ('category[]', $categories, old('category'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'selectall-category' ])  -->
+                    <select id="category" multiple name="category[]">
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                    </select>
+
+                    <p class="help-block"></p>
+                    @if($errors->has('category'))
+                        <p class="help-block">
+                            {{ $errors->first('category') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+
                     <div class="field is-grouped">
                         <div class="control">
                             <button class="button is-link" type="submit">Submit</button>

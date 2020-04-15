@@ -19,9 +19,9 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/logout', function () {
-    return redirect('login')->with(Auth::logout());
-});
+// Route::get('/logout', function () {
+//     return redirect('login')->with(Auth::logout());
+// });
 
 /*Route::get('/about', function () {
     //$profiel = App\Game::paginate(4);
@@ -54,6 +54,24 @@ Route::put('/games/{game}', 'GameController@update')
     ->middleware('auth');
 Route::delete('/games/{game}', 'GameController@destroy')
     ->name('games.destroy')
+    ->middleware('auth');
+Route::get('/categories', 'CategoryController@index')
+    ->name('categories.index')
+    ->middleware('auth');
+Route::get('/categories/create', 'CategoryController@create')
+    ->name('categories.create')
+    ->middleware('auth');
+Route::post('/categories', 'CategoryController@store')
+    ->name('categories.store')
+    ->middleware('auth');
+Route::get('/categories/{category}/edit', 'CategoryController@edit')
+    ->name('categories.edit')
+    ->middleware('auth');
+Route::put('/categories/{category}', 'CategoryController@update')
+    ->name('categories.update')
+    ->middleware('auth');
+Route::delete('/categories/{category}', 'CategoryController@destroy')
+    ->name('categories.destroy')
     ->middleware('auth');
 
 Auth::routes();
