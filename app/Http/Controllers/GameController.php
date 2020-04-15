@@ -108,4 +108,11 @@ class GameController extends Controller
         ]);
     }
 
+    public function home()
+    {
+        $games = Game::latest()->get();
+
+        return view('home', ['games' => $games]);
+    }
+
 }

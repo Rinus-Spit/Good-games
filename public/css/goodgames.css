@@ -1,0 +1,17 @@
+.main {
+    width: 80%;
+    max-width: 800px;
+}
+
+header, footer {
+    background-image: url('/images/amirali-mirhashemian-uQr-pBGLhEY-unsplash.png');
+}
+
+h1 {
+    display: inline-block;
+}
+
+ul.links, ul.links li {
+    display: inline-block;
+    list-style-type: none;
+}
