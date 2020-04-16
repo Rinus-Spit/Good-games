@@ -14,7 +14,7 @@ class Game extends Model
     }
     
     public function hasCategory($category) {
-        return $game->categories->contains($category);
+        return $this->category->contains($category);
     }    
 
 }

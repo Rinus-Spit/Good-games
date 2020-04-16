@@ -14,6 +14,9 @@
                         <div class="description">
                             {{ $game->body }}
                         </div>
+                        @foreach ($game->category as $category)
+                            <a href="/games?category={{ $category->name }}">{{ $category->name }}</a>
+                        @endforeach
                     </li>
                 </ul>
 

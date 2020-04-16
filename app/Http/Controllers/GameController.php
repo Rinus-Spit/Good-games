@@ -15,7 +15,12 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::latest()->get();
+        if (request('category')) {
+            $games = Category::where('name',request('category'))->firstOrFail()->games;
+        } else {
+            $games = Game::latest()->get();
+        }
+        //dd($games);
 
         return view('games.index', ['games' => $games]);
     }
@@ -41,9 +46,9 @@ class GameController extends Controller
     {
         $game = Game::create($this->validateGame());
         $game->category()->sync((array)$request->input('category'));
-        dd($request);
+        //dd($request);
 
-        //return redirect(route('games.index'));
+        return redirect(route('games.index'));
     }
 
     /**
@@ -65,8 +70,9 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
+        $categories = category::all();
 
-        return view('games.edit', ['game' => $game]);
+        return view('games.edit', ['game' => $game], ['categories' => $categories]);
     }
 
     /**
@@ -79,8 +85,9 @@ class GameController extends Controller
     public function update(Request $request, Game $game)
     {
         $game->update($this->validateGame());
+        $game->category()->sync((array)$request->input('category'));
 
-        return redirect(route('games.index', $game));
+        return redirect(route('games.indexedit', $game));
     }
 
     /**

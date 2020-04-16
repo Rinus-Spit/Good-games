@@ -18,9 +18,11 @@ class CreateGameCategoryTable extends Migration
             $table->timestamps();
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('game_id')->unsigned();
+            
+            $table->unique(['category_id','game_id']);
 
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('game_id')->references('id')->on('games');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
         });
     }
 
