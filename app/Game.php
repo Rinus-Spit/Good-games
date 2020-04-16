@@ -17,4 +17,9 @@ class Game extends Model
         return $this->category->contains($category);
     }    
 
+    public function user()
+    {
+        return $this->belongsToMany(User::class, 'game_user')->withPivot('stars');
+    }
+
 }

@@ -55,6 +55,9 @@ Route::put('/games/{game}', 'GameController@update')
 Route::delete('/games/{game}', 'GameController@destroy')
     ->name('games.destroy')
     ->middleware('auth');
+Route::get('/games/{game}/star', 'GameController@star')
+    ->name('games.star')
+    ->middleware('auth');
 Route::get('/categories', 'CategoryController@index')
     ->name('categories.index')
     ->middleware('auth');

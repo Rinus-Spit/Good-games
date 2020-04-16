@@ -36,12 +36,12 @@
                 <div class="col-xs-12 form-group">
                     
                     <label class="control-label" for="category">Categorieën</label>
-                    <button type="button" class="btn btn-primary btn-xs" id="selectbtn-tag">
-                        Select all {{ ($game->hasCategory('wargame')) ? 'selected' : '' }}
+                    <!-- <button type="button" class="btn btn-primary btn-xs" id="selectbtn-tag">
+                        Select all 
                     </button>
                     <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-tag">
                         Deselect all
-                    </button>
+                    </button> -->
                     <!--  ('category[]', $categories, old('category'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'selectall-category' ])  -->
                     <select id="category" multiple name="category[]">
                     @foreach ($categories as $category)
@@ -67,5 +67,10 @@
 
 
             </div>
+
+@endsection
+
+@section ('javascript')
+
 
 @endsection

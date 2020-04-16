@@ -110,6 +110,22 @@ class GameController extends Controller
         return view('games.indexedit', ['games' => $games]);
     }
 
+    /**
+     * Give the game stars.
+     *
+     * @param  \App\Game  $game
+     * @return redirect \Illuminate\Http\Response
+     */
+    public function star(Game $game)
+    {
+        if (request('star')) {
+            $user = auth()->user();
+            $game->user()->syncWithoutDetaching([$user->id => ['stars' => request('star')]]);
+        }
+
+        return redirect(route('games.show', ['game' => $game]));
+    }
+
     protected function validategame()
     {
         return request()->validate([

@@ -42,7 +42,6 @@
               <a class="nav-link" href="#">Link</a>
             </li>
           </ul>
-        </div>
                     <!-- Right Side Of Navbar -->
                     <ul class="links auth">
                         <!-- Authentication Links -->
@@ -113,13 +112,15 @@
                 </div>
             </footer>
 
+
         </div>
         <!-- Scripts -->
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/browser.min.js"></script>
-            <script src="assets/js/breakpoints.min.js"></script>
-            <script src="assets/js/util.js"></script>
-            <script src="assets/js/main.js"></script>
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/browser.min.js') }}"></script>
+            <script src="{{ asset('js/breakpoints.min.js') }}"></script>
+            <script src="{{ asset('js/util.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+            @yield('javascript')
 
     </body>
 </html>
