@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Game;
-use App\category;
+use App\Category;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
@@ -32,7 +32,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        $categories = category::all();
+        $categories = Category::all();
         return view('games.create',['categories' => $categories]);
     }
 
@@ -70,7 +70,7 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        $categories = category::all();
+        $categories = Category::all();
 
         return view('games.edit', ['game' => $game], ['categories' => $categories]);
     }
