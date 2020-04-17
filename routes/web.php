@@ -58,6 +58,9 @@ Route::delete('/games/{game}', 'GameController@destroy')
 Route::get('/games/{game}/star', 'GameController@star')
     ->name('games.star')
     ->middleware('auth');
+Route::get('/games/{game}/review', 'ReviewController@create')
+    ->name('reviews.create')
+    ->middleware('auth');
 Route::get('/categories', 'CategoryController@index')
     ->name('categories.index')
     ->middleware('auth');
@@ -75,6 +78,18 @@ Route::put('/categories/{category}', 'CategoryController@update')
     ->middleware('auth');
 Route::delete('/categories/{category}', 'CategoryController@destroy')
     ->name('categories.destroy')
+    ->middleware('auth');
+Route::post('/reviews', 'ReviewController@store')
+    ->name('reviews.store')
+    ->middleware('auth');
+Route::get('/reviews/{game}/{review}/edit', 'ReviewController@edit')
+    ->name('reviews.edit')
+    ->middleware('auth');
+Route::put('/reviews/{review}', 'ReviewController@update')
+    ->name('reviews.update')
+    ->middleware('auth');
+Route::delete('/reviews/{review}', 'ReviewController@destroy')
+    ->name('reviews.destroy')
     ->middleware('auth');
 
 Auth::routes();

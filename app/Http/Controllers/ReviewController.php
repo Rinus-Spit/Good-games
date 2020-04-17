@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\review;
+use App\Game;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -22,9 +23,9 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Game $game)
     {
-        //
+        return view('reviews.create', ['game' => $game]);
     }
 
     /**
@@ -35,7 +36,11 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        // Review::create($request->all());
+        Review::create($this->validateReview());
+
+        return redirect(route('games.show',[ 'game'=>request('game_id')]));
     }
 
     /**
@@ -55,9 +60,10 @@ class ReviewController extends Controller
      * @param  \App\review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit(review $review)
+    public function edit(Game $game, review $review)
     {
-        //
+
+        return view('reviews.edit', ['game' => $game], ['review' => $review]);
     }
 
     /**
@@ -69,7 +75,10 @@ class ReviewController extends Controller
      */
     public function update(Request $request, review $review)
     {
-        //
+        $review->update($this->validateReview());
+        // $review->category()->sync((array)$request->input('category'));
+
+        return redirect(route('games.show', request('game_id')));
     }
 
     /**
@@ -80,6 +89,18 @@ class ReviewController extends Controller
      */
     public function destroy(review $review)
     {
-        //
+        $review->delete($review);
+
+        return redirect(route('games.show',[ 'game'=>request('game_id')]));
     }
+
+    protected function validateReview()
+    {
+        return request()->validate([
+            'body' => 'required',
+            'game_id' => 'required',
+            'user_id' => 'required'
+        ]);
+    }
+
 }

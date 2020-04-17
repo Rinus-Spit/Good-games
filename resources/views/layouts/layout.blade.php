@@ -33,15 +33,7 @@
             <header id="header" class="text-light">
                 <h1><a class="logo" href="./">Goodgames</a></h1>
                 <img class="img-fluid" src="{{ asset('images/robert-2.jpg') }}" alt="Photo by Robert Coelho on Unsplash">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul>
+                <div class="show collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="links auth">
                         <!-- Authentication Links -->

@@ -22,4 +22,9 @@ class Game extends Model
         return $this->belongsToMany(User::class, 'game_user')->withPivot('stars');
     }
 
+    public function review()
+    {
+        return $this->belongsToMany(User::class, 'reviews')->withPivot(['body','id']);
+    }
+
 }

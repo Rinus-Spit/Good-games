@@ -3,6 +3,26 @@
     max-width: 800px;
 }
 
+header #navbarSupportedContent {
+    float: right;
+}
+
+a {
+    color: #c8c9ca;
+}
+
+a:hover {
+    color: #a8a9aa;
+}
+
+#content a {
+    color: #003bcf;
+}
+
+#content a:hover {
+    color: #002baf;
+}
+
 header, footer {
     background-image: url('/images/amirali-mirhashemian-uQr-pBGLhEY-unsplash.png');
 }
