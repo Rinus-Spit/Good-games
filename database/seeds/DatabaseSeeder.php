@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
             'email' => Str::random(10).'@gmail.com',
             'password' => Hash::make('password'),
         ]);
+
+        $this->call(CategorySeeder::class);
+        $this->call(GameSeeder::class);
     }
 }

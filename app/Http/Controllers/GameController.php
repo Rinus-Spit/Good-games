@@ -45,7 +45,7 @@ class GameController extends Controller
     public function store(Request $request)
     {
         $game = Game::create($this->validateGame());
-        $game->category()->sync((array)$request->input('category'));
+        $game->categories()->sync((array)$request->input('category'));
         //dd($request);
 
         return redirect(route('games.index'));
@@ -85,7 +85,7 @@ class GameController extends Controller
     public function update(Request $request, Game $game)
     {
         $game->update($this->validateGame());
-        $game->category()->sync((array)$request->input('category'));
+        $game->categories()->sync((array)$request->input('category'));
 
         return redirect(route('games.indexedit', $game));
     }

@@ -8,13 +8,13 @@ class Game extends Model
 {
     protected $fillable = ['title', 'excerpt', 'body'];
 
-    public function category()
+    public function categories()
     {
         return $this->belongsToMany(Category::class, 'game_category');
     }
     
     public function hasCategory($category) {
-        return $this->category->contains($category);
+        return $this->categories->contains($category);
     }    
 
     public function user()

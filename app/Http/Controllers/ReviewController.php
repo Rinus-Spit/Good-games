@@ -76,7 +76,7 @@ class ReviewController extends Controller
     public function update(Request $request, review $review)
     {
         $review->update($this->validateReview());
-        // $review->category()->sync((array)$request->input('category'));
+        // $review->categories()->sync((array)$request->input('category'));
 
         return redirect(route('games.show', request('game_id')));
     }

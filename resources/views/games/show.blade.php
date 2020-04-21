@@ -27,7 +27,7 @@ for ($i=0;$i<$stars;$i++) {
                             {{ $game->body }}
                         </div>
                         <div class="categories">
-                        @foreach ($game->category as $category)
+                        @foreach ($game->categories as $category)
                             <a href="/games?category={{ $category->name }}">{{ $category->name }}</a>
                         @endforeach
                         </div>
