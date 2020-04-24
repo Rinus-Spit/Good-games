@@ -7,7 +7,7 @@
             <div class="content">
                 <h1>Pas game aan</h1>
 
-                <form method="post" action="/games/{{ $game->id }}">
+                <form method="post" action="/games/{{ $game->id }}"  enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -31,6 +31,11 @@
                             <input class="input" type="text" name="body" id="game_body" value="{{ $game->body }}">
                         </div>
                     </div>
+
+                    <input id="file-upload" type="file" name="image" accept="image/*" onchange="readURL(this);">
+                        <label for="file-upload" id="file-drag">
+                        <img src="{{ $game->image }}" alt="image" class="img-fluid">
+                        </label>
 
                     <div class="row">
                 <div class="col-xs-12 form-group">
@@ -59,7 +64,7 @@
             </div>
                     <div class="field is-grouped">
                         <div class="control">
-                            <button class="button is-link" type="submit">Pas game aan</button>
+                            <button class="btn btn-success is-link" type="submit">Pas game aan</button>
                         </div>
 
                     </div>

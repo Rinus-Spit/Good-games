@@ -21,7 +21,7 @@
                     </li>
                 @endforeach
                 </ul>
-
+                {{ $games->links() }}
             </div>
 
 @endsection

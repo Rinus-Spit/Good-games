@@ -23,6 +23,9 @@ for ($i=0;$i<$stars;$i++) {
                         <div class="excerpt">
                             {{ $game->excerpt }}
                         </div>
+                        <div class="image">
+                            <img src="{{ $game->image }}" alt="image" class="img-fluid">
+                        </div>
                         <div class="description">
                             {{ $game->body }}
                         </div>

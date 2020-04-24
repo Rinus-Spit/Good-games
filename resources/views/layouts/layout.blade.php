@@ -25,6 +25,7 @@
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/all.min.css" /> -->
         <!--<script src="https://use.fontawesome.com/7626226e024.js"></script>-->
+        <script src="https://unpkg.com/turbolinks"></script>
     </head>
     <body class="">
         <div class="container main">
@@ -32,7 +33,7 @@
         <!-- Header -->
             <header id="header" class="text-light">
                 <h1><a class="logo" href="./">Goodgames</a></h1>
-                <img class="img-fluid" src="{{ asset('images/robert-2.jpg') }}" alt="Photo by Robert Coelho on Unsplash">
+                <img class="img-fluid" src="{{ asset('images/ROBERT-2.jpg') }}" alt="Photo by Robert Coelho on Unsplash">
                 <div class="show collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="links auth">

@@ -16,9 +16,9 @@ class GameController extends Controller
     public function index()
     {
         if (request('category')) {
-            $games = Category::where('name',request('category'))->firstOrFail()->games;
+            $games = Category::where('name',request('category'))->firstOrFail()->games->paginate(6);
         } else {
-            $games = Game::latest()->get();
+            $games = Game::latest()->paginate(6);
         }
         //dd($games);
 
@@ -84,7 +84,21 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        $game->update($this->validateGame());
+        // dd(request('image'));
+    //     request()->validate([
+    //         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //    ]);
+    //    if ($files = $request->file('image')) {
+    //        $destinationPath = 'public/images/'; // upload path
+    //        $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+    //        $files->move($destinationPath, $profileImage);
+    //     }
+        $attributes = $this->validateGame();
+        if (request('image')) {
+            $attributes['image'] = request('image')->store('images');
+        }
+        // dd($attributes);
+        $game->update($attributes);
         $game->categories()->sync((array)$request->input('category'));
 
         return redirect(route('games.indexedit', $game));
@@ -105,7 +119,7 @@ class GameController extends Controller
 
     public function indexedit()
     {
-        $games = Game::latest()->get();
+        $games = Game::latest()->paginate(6);
 
         return view('games.indexedit', ['games' => $games]);
     }
@@ -126,18 +140,19 @@ class GameController extends Controller
         return redirect(route('games.show', ['game' => $game]));
     }
 
-    protected function validategame()
+    protected function validateGame()
     {
         return request()->validate([
             'title' => 'required',
             'excerpt' => 'required',
-            'body' => 'required'
+            'body' => 'required',
+            'image' => ['image','mimes:jpeg,png,jpg,gif,svg','max:2048']
         ]);
     }
 
     public function home()
     {
-        $games = Game::latest()->get();
+        $games = Game::latest()->paginate(6);
 
         return view('home', ['games' => $games]);
     }

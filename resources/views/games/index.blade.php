@@ -14,10 +14,15 @@
                         <div class="excerpt">
                             {{ $game->excerpt }}
                         </div>
+                        @if ( $game->image )
+                        <div class="image">
+                            <img src="{{ $game->image }}" alt="image" class="img-fluid">
+                        </div>
+                        @endif
                     </li>
                 @endforeach
                 </ul>
-
+                {{ $games->links() }}
             </div>
         </div>
     </div>

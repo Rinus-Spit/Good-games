@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,66 +32,52 @@ Route::get('/welcome', function () {
     return view('Game');
 });*/
 
-Route::get('/games', 'GameController@index')
-    ->name('games.index')
-    ->middleware('auth');
-Route::post('/games', 'GameController@store')
-    ->name('games.store')
-    ->middleware('auth');
-Route::get('/games/create', 'GameController@create')
-    ->name('games.create')
-    ->middleware('auth');
-Route::get('/games/showgames', 'GameController@indexedit')
-    ->name('games.indexedit')
-    ->middleware('auth');
-Route::get('/games/{game}', 'GameController@show')
-    ->name('games.show')
-    ->middleware('auth');
-Route::get('/games/{game}/edit', 'GameController@edit')
-    ->name('games.edit')
-    ->middleware('auth');
-Route::put('/games/{game}', 'GameController@update')
-    ->name('games.update')
-    ->middleware('auth');
-Route::delete('/games/{game}', 'GameController@destroy')
-    ->name('games.destroy')
-    ->middleware('auth');
-Route::get('/games/{game}/star', 'GameController@star')
-    ->name('games.star')
-    ->middleware('auth');
-Route::get('/games/{game}/review', 'ReviewController@create')
-    ->name('reviews.create')
-    ->middleware('auth');
-Route::get('/categories', 'CategoryController@index')
-    ->name('categories.index')
-    ->middleware('auth');
-Route::get('/categories/create', 'CategoryController@create')
-    ->name('categories.create')
-    ->middleware('auth');
-Route::post('/categories', 'CategoryController@store')
-    ->name('categories.store')
-    ->middleware('auth');
-Route::get('/categories/{category}/edit', 'CategoryController@edit')
-    ->name('categories.edit')
-    ->middleware('auth');
-Route::put('/categories/{category}', 'CategoryController@update')
-    ->name('categories.update')
-    ->middleware('auth');
-Route::delete('/categories/{category}', 'CategoryController@destroy')
-    ->name('categories.destroy')
-    ->middleware('auth');
-Route::post('/reviews', 'ReviewController@store')
-    ->name('reviews.store')
-    ->middleware('auth');
-Route::get('/reviews/{game}/{review}/edit', 'ReviewController@edit')
-    ->name('reviews.edit')
-    ->middleware('auth');
-Route::put('/reviews/{review}', 'ReviewController@update')
-    ->name('reviews.update')
-    ->middleware('auth');
-Route::delete('/reviews/{review}', 'ReviewController@destroy')
-    ->name('reviews.destroy')
-    ->middleware('auth');
+Route::middleware(['auth','roles.auth'])->group(function () {
+    Route::get('/games', 'GameController@index')
+        ->name('games.index');
+    Route::post('/games', 'GameController@store')
+        ->name('games.store');
+    Route::get('/games/create', 'GameController@create')
+        ->name('games.create');
+    Route::get('/games/showgames', 'GameController@indexedit')
+        ->name('games.indexedit');
+    Route::get('/games/{game}', 'GameController@show')
+        ->name('games.show');
+    Route::get('/games/{game}/edit', 'GameController@edit')
+        ->name('games.edit');
+    Route::put('/games/{game}', 'GameController@update')
+        ->name('games.update');
+    Route::delete('/games/{game}', 'GameController@destroy')
+        ->name('games.destroy');
+    Route::get('/games/{game}/star', 'GameController@star')
+        ->name('games.star');
+    Route::get('/games/{game}/review', 'ReviewController@create')
+        ->name('reviews.create');
+    Route::get('/categories', 'CategoryController@index')
+        ->name('categories.index');
+    Route::get('/categories/create', 'CategoryController@create')
+        ->name('categories.create');
+    Route::post('/categories', 'CategoryController@store')
+        ->name('categories.store');
+    Route::get('/categories/{category}/edit', 'CategoryController@edit')
+        ->name('categories.edit');
+    Route::put('/categories/{category}', 'CategoryController@update')
+        ->name('categories.update');
+    Route::delete('/categories/{category}', 'CategoryController@destroy')
+        ->name('categories.destroy');
+    Route::post('/reviews', 'ReviewController@store')
+        ->name('reviews.store');
+    Route::get('/reviews/{game}/{review}/edit', 'ReviewController@edit')
+        ->name('reviews.edit');
+    Route::put('/reviews/{review}', 'ReviewController@update')
+        ->name('reviews.update');
+    Route::delete('/reviews/{review}', 'ReviewController@destroy')
+        ->name('reviews.destroy');
+    Route::get('image', 'ImageController@index')
+        ->name('images.index');
+    Route::get('store', 'ImageController@store')
+        ->name('images.index');
+});
 
 Auth::routes();
 

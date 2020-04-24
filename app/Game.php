@@ -6,7 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-    protected $fillable = ['title', 'excerpt', 'body'];
+    protected $fillable = ['title', 'excerpt', 'body', 'image'];
+
+    public function getImageAttribute($value)
+    {
+        if ($value) {
+            return asset('storage/'.$value);
+        }
+        return '';
+    }
+
 
     public function categories()
     {
