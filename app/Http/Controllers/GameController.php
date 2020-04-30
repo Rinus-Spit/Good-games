@@ -158,8 +158,8 @@ class GameController extends Controller
             $game['stars'] = $game->stars();
             return $game;
         });
-        $new_games = $star_games->sortByDesc('stars', SORT_NUMERIC);
-        $new_games->values()->all();
+        $new_games = $star_games->sortByDesc('stars', SORT_NUMERIC)->paginate(6);
+        //$new_games->values()->paginate(6);
         //dd($new_games);
 
         return view('home', ['games' => $new_games]);
