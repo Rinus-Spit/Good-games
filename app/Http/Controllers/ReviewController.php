@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\review;
+use App\Review;
 use App\Game;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,7 @@ class ReviewController extends Controller
      */
     public function create(Game $game)
     {
-        return view('reviews.create', ['game' => $game]);
+        return view('Reviews.create', ['game' => $game]);
     }
 
     /**
@@ -46,10 +46,10 @@ class ReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\review  $review
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(review $review)
+    public function show(Review $review)
     {
         //
     }
@@ -57,23 +57,23 @@ class ReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\review  $review
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit(Game $game, review $review)
+    public function edit(Game $game, Review $review)
     {
 
-        return view('reviews.edit', ['game' => $game], ['review' => $review]);
+        return view('Reviews.edit', ['game' => $game], ['Review' => $review]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\review  $review
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, review $review)
+    public function update(Request $request, Review $review)
     {
         $review->update($this->validateReview());
         // $review->categories()->sync((array)$request->input('category'));
@@ -84,10 +84,10 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\review  $review
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(review $review)
+    public function destroy(Review $review)
     {
         $review->delete($review);
 

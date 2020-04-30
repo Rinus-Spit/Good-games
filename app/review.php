@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class review extends Model
+class Review extends Model
 {
     protected $fillable = ['body','game_id','user_id'];
     //

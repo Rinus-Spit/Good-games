@@ -13,7 +13,7 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('Reviews', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->text('body');
@@ -32,6 +32,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('Reviews');
     }
 }

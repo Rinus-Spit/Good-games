@@ -134,7 +134,7 @@ class GameController extends Controller
     {
         if (request('star')) {
             $user = auth()->user();
-            $game->user()->syncWithoutDetaching([$user->id => ['stars' => request('star')]]);
+            $game->users()->syncWithoutDetaching([$user->id => ['stars' => request('star')]]);
         }
 
         return redirect(route('games.show', ['game' => $game]));
@@ -152,9 +152,17 @@ class GameController extends Controller
 
     public function home()
     {
-        $games = Game::latest()->paginate(6);
+        $games = Game::get();
+        $star_games = $games->map(function ($game) 
+        {
+            $game['stars'] = $game->stars();
+            return $game;
+        });
+        $new_games = $star_games->sortByDesc('stars', SORT_NUMERIC);
+        $new_games->values()->all();
+        //dd($new_games);
 
-        return view('home', ['games' => $games]);
+        return view('home', ['games' => $new_games]);
     }
 
 }

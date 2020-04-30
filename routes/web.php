@@ -51,8 +51,8 @@ Route::middleware(['auth','roles.auth'])->group(function () {
         ->name('games.destroy');
     Route::get('/games/{game}/star', 'GameController@star')
         ->name('games.star');
-    Route::get('/games/{game}/review', 'ReviewController@create')
-        ->name('reviews.create');
+    Route::get('/games/{game}/Review', 'ReviewController@create')
+        ->name('Reviews.create');
     Route::get('/categories', 'CategoryController@index')
         ->name('categories.index');
     Route::get('/categories/create', 'CategoryController@create')
@@ -65,14 +65,14 @@ Route::middleware(['auth','roles.auth'])->group(function () {
         ->name('categories.update');
     Route::delete('/categories/{category}', 'CategoryController@destroy')
         ->name('categories.destroy');
-    Route::post('/reviews', 'ReviewController@store')
-        ->name('reviews.store');
-    Route::get('/reviews/{game}/{review}/edit', 'ReviewController@edit')
-        ->name('reviews.edit');
-    Route::put('/reviews/{review}', 'ReviewController@update')
-        ->name('reviews.update');
-    Route::delete('/reviews/{review}', 'ReviewController@destroy')
-        ->name('reviews.destroy');
+    Route::post('/Reviews', 'ReviewController@store')
+        ->name('Reviews.store');
+    Route::get('/Reviews/{game}/{Review}/edit', 'ReviewController@edit')
+        ->name('Reviews.edit');
+    Route::put('/Reviews/{Review}', 'ReviewController@update')
+        ->name('Reviews.update');
+    Route::delete('/Reviews/{Review}', 'ReviewController@destroy')
+        ->name('Reviews.destroy');
     Route::get('image', 'ImageController@index')
         ->name('images.index');
     Route::get('store', 'ImageController@store')
