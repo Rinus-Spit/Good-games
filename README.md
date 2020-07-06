@@ -1,6 +1,6 @@
 ## Een good games website waar je een review an games kunt toevoegen en games kunt raten gemaakt met Laravel
 
-Je kunt hem in werking zien op <a href="games.rinus.online">Good Games</a>
+Je kunt hem in werking zien op <a href="https://games.rinus.online">Good Games</a>
 
 ## About Laravel
 
