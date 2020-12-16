@@ -1,6 +1,15 @@
 ## Een good games website waar je een review aan games kunt toevoegen en games kunt raten gemaakt met Laravel
 
 Je kunt hem in werking zien op <a href="https://games.rinus.online">Good Games</a>
+Om dit lokaal te installeren maak met git een clone met de groene button "code".
+Maak een database aan en doe nu lokaal:
+composer install
+npm install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+
 
 ## About Laravel
 
