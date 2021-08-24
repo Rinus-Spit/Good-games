@@ -1,6 +1,6 @@
 ## Een good games website waar je een review aan games kunt toevoegen en games kunt raten gemaakt met Laravel
 
-Je kunt hem in werking zien op <a href="https://games.rinusportfolio.nl">Good Games</a>
+Je kunt hem in werking zien op <a href="http://games.rinusportfolio.nl">Good Games</a>
 Om dit lokaal te installeren maak met git een clone met de groene button "code".
 Maak een database aan en doe nu lokaal:
 composer install
